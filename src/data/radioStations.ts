@@ -13,6 +13,7 @@ export interface EpisodeItem {
   duration: string;
   thumbnail: string;
   thematicTag?: string;
+  thematicConnection?: string;
 }
 
 export interface ShowItem {
@@ -22,6 +23,7 @@ export interface ShowItem {
   category: string;
   color: string;
   thumbnail: string;
+  description?: string;
 }
 
 export interface RadioStation {

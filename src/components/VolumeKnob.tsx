@@ -2,7 +2,7 @@ import React, { useRef, useState } from 'react';
 import { Volume2, VolumeX } from 'lucide-react';
 
 interface VolumeKnobProps {
-  volume: number; // 0 to 100
+  volume: number;
   isMuted: boolean;
   isPoweredOn: boolean;
   onVolumeChange: (vol: number) => void;
@@ -21,7 +21,6 @@ export const VolumeKnob: React.FC<VolumeKnobProps> = ({
   const [startY, setStartY] = useState(0);
   const [startVol, setStartVol] = useState(volume);
 
-  // Map volume (0 to 100) to rotation angle in degrees (-135deg to +135deg)
   const effectiveVol = isMuted ? 0 : volume;
   const rotationAngle = -135 + (effectiveVol / 100) * 270;
 
@@ -60,26 +59,24 @@ export const VolumeKnob: React.FC<VolumeKnobProps> = ({
 
   return (
     <div className="flex flex-col items-center select-none">
-      <div className="text-[10px] font-mono font-bold tracking-widest text-amber-300/80 uppercase mb-1">
+      <div className="text-[10px] font-mono font-bold tracking-widest text-rose-400 uppercase mb-1">
         مستوى الصوت · VOLUME
       </div>
 
       <div className="flex items-center gap-1.5 sm:gap-2">
-        {/* Mute button */}
         <button
           onClick={onToggleMute}
           disabled={!isPoweredOn}
           className={`w-7 h-7 rounded-full border flex items-center justify-center transition-all cursor-pointer ${
             isMuted
-              ? 'bg-red-950/80 border-red-700 text-red-400'
-              : 'bg-[#201914] border-[#3e3025] hover:border-amber-500/70 text-amber-300'
-          } disabled:opacity-40`}
+              ? 'bg-rose-950/80 border-[#ce1126] text-[#ff2a5f]'
+              : 'bg-[#121622] border-[#242d40] hover:border-[#ce1126] text-slate-300 hover:text-white'
+          } disabled:opacity-30`}
           title={isMuted ? 'إلغاء كتم الصوت' : 'كتم الصوت'}
         >
           {isMuted ? <VolumeX className="w-3.5 h-3.5" /> : <Volume2 className="w-3.5 h-3.5" />}
         </button>
 
-        {/* Rotary Knurled Knob Body */}
         <div
           ref={knobRef}
           onPointerDown={handlePointerDown}
@@ -87,37 +84,34 @@ export const VolumeKnob: React.FC<VolumeKnobProps> = ({
           onPointerUp={handlePointerUp}
           onPointerCancel={handlePointerUp}
           onWheel={handleWheel}
-          className={`relative w-18 h-18 sm:w-20 sm:h-20 rounded-full knurled-knob border-2 border-[#544335] p-1.5 cursor-grab active:cursor-grabbing transition-transform ${
-            !isPoweredOn ? 'opacity-60 cursor-not-allowed' : ''
+          className={`relative w-18 h-18 sm:w-20 sm:h-20 rounded-full knurled-knob border-2 border-[#475569] p-1.5 cursor-grab active:cursor-grabbing transition-transform ${
+            !isPoweredOn ? 'opacity-50 cursor-not-allowed' : ''
           }`}
         >
-          {/* Outer knurled ridges */}
           <div className="w-full h-full rounded-full knurled-edge flex items-center justify-center p-1.5 shadow-inner">
-            <div className="relative w-full h-full rounded-full bg-gradient-to-tr from-[#1f1915] via-[#2f251f] to-[#15110e] border border-[#483a2d] flex items-center justify-center shadow-lg">
-              {/* Pointer */}
+            <div className="relative w-full h-full rounded-full bg-gradient-to-tr from-[#0f172a] via-[#1e293b] to-[#0b101b] border border-[#334155] flex items-center justify-center shadow-lg">
               <div
                 className="absolute inset-0 flex items-start justify-center pt-1 transition-transform duration-75 ease-out pointer-events-none"
                 style={{
                   transform: `rotate(${rotationAngle}deg)`,
                 }}
               >
-                <div className="w-1 h-3 rounded-full bg-amber-400 shadow-[0_0_6px_#f59e0b]" />
+                <div className="w-1.5 h-3 rounded-full bg-[#ce1126] shadow-[0_0_8px_#ce1126]" />
               </div>
 
-              {/* Brass Center Cap */}
-              <div className="w-6 h-6 rounded-full bg-gradient-to-tr from-[#916b28] via-[#e2be73] to-[#734f19] border border-[#f0d898]/40 shadow-md flex items-center justify-center">
-                <div className="w-2 h-2 rounded-full bg-[#3d2c12]" />
+              <div className="w-7 h-7 rounded-full bg-gradient-to-tr from-[#64748b] via-[#f1f5f9] to-[#94a3b8] border border-white/60 shadow-md flex items-center justify-center">
+                <div className="w-2.5 h-2.5 rounded-full bg-[#0f172a]" />
               </div>
             </div>
           </div>
         </div>
 
-        <div className="w-7 h-7 flex items-center justify-center font-mono text-[9px] text-amber-500/70">
+        <div className="w-7 h-7 flex items-center justify-center font-mono text-[9px] text-slate-400">
           MAX
         </div>
       </div>
 
-      <div className="mt-1 text-[11px] font-mono font-bold text-amber-400/90 tracking-wider">
+      <div className="mt-1 text-[11px] font-mono font-bold text-rose-400 tracking-wider">
         {isMuted ? 'MUTED' : `${volume}%`}
       </div>
     </div>

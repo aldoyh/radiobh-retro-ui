@@ -23,7 +23,6 @@ export const SearchModal: React.FC<SearchModalProps> = ({
   const [query, setQuery] = useState('');
   const [page, setPage] = useState(1);
 
-  // Quick preset keywords for prompt topics
   const popularTopics = [
     'خليجي 27',
     'المونديال',
@@ -63,40 +62,47 @@ export const SearchModal: React.FC<SearchModalProps> = ({
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-black/80 backdrop-blur-sm animate-fade-in select-none">
-      <div className="relative w-full max-w-3xl max-h-[85vh] bg-[#16120e] rounded-xl border border-[#483728] shadow-2xl flex flex-col overflow-hidden">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-black/85 backdrop-blur-sm animate-fade-in select-none">
+      <div className="relative w-full max-w-3xl max-h-[85vh] bg-[#0d1017] rounded-xl border border-[#232b3d] shadow-2xl flex flex-col overflow-hidden">
         {/* Header */}
-        <div className="flex items-center justify-between p-4 border-b border-[#35271d] bg-[#1d1612]">
-          <div className="flex items-center gap-2">
-            <Radio className="w-5 h-5 text-amber-400" />
-            <h3 className="text-base sm:text-lg font-bold text-amber-100">
-              البحث الذكي في أرشيف إذاعة البحرين (810 حلقات)
-            </h3>
+        <div className="flex items-center justify-between p-4 border-b border-[#1f2638] bg-[#121622]">
+          <div className="flex items-center gap-2.5">
+            <div className="p-1.5 rounded-md bg-[#ce1126]/10 text-rose-400 border border-[#ce1126]/25">
+              <Radio className="w-5 h-5 text-[#ce1126]" />
+            </div>
+            <div>
+              <h3 className="text-base sm:text-lg font-bold text-white">
+                البحث الذكي في أرشيف إذاعة البحرين (810 حلقات)
+              </h3>
+              <p className="text-xs text-slate-400">
+                ابحث عن أي حلقة وسيتم ضبط مؤشر الراديو وموالفته للموجة التابعة لها
+              </p>
+            </div>
           </div>
           <button
             onClick={onClose}
-            className="w-8 h-8 rounded-full bg-[#2a1f18] hover:bg-[#3d2d22] text-amber-300 flex items-center justify-center transition-colors cursor-pointer"
+            className="w-8 h-8 rounded-full bg-[#1b2233] hover:bg-[#252f44] text-slate-300 hover:text-white flex items-center justify-center transition-colors cursor-pointer"
           >
             <X className="w-4 h-4" />
           </button>
         </div>
 
-        {/* Search Input Bar */}
-        <div className="p-4 border-b border-[#2d2118] bg-[#120d09]">
+        {/* Search Input and Popular Keywords */}
+        <div className="p-4 border-b border-[#1d2536] bg-[#090c12]">
           <div className="relative">
-            <Search className="w-5 h-5 absolute right-3 top-1/2 -translate-y-1/2 text-amber-400" />
+            <Search className="w-4 h-4 absolute right-3 top-1/2 -translate-y-1/2 text-rose-400" />
             <input
               type="text"
-              autoFocus
-              placeholder="ابحث بالعنوان، البرنامج، الضيف، أو الموضوع (مثال: خليجي 27، المستطيل الأخضر، الذكاء، فن الصوت)..."
+              placeholder="اكتب اسم الحلقة، الموضوع، الضيف، أو البرنامج..."
               value={query}
               onChange={(e) => handleQueryChange(e.target.value)}
-              className="w-full pl-4 pr-11 py-2.5 bg-[#1b140f] text-amber-100 placeholder:text-amber-300/40 rounded-lg border border-[#3e3025] focus:outline-none focus:border-amber-400 text-sm"
+              autoFocus
+              className="w-full pl-4 pr-10 py-2.5 text-sm bg-[#121622] text-white placeholder:text-slate-500 rounded-lg border border-[#242d40] focus:outline-none focus:border-[#ce1126] transition-colors"
             />
             {query && (
               <button
                 onClick={() => handleQueryChange('')}
-                className="absolute left-3 top-1/2 -translate-y-1/2 text-xs text-amber-400/60 hover:text-amber-300"
+                className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-white text-xs cursor-pointer"
               >
                 مسح
               </button>
@@ -104,13 +110,13 @@ export const SearchModal: React.FC<SearchModalProps> = ({
           </div>
 
           {/* Quick topic tags */}
-          <div className="mt-3 flex items-center gap-1.5 overflow-x-auto pb-1 scrollbar-none">
-            <span className="text-[11px] font-mono text-amber-400/60 shrink-0">مواضيع مقترحة:</span>
+          <div className="flex items-center gap-1.5 mt-2.5 overflow-x-auto pb-1 scrollbar-none text-xs">
+            <span className="text-slate-400 shrink-0 font-mono text-[11px]">مواضيع سريعة:</span>
             {popularTopics.map((topic) => (
               <button
                 key={topic}
                 onClick={() => handleQueryChange(topic)}
-                className="px-2.5 py-0.5 text-xs rounded bg-[#251b14] text-amber-200/80 hover:text-amber-100 hover:bg-[#34261c] border border-[#382b20] whitespace-nowrap transition-colors cursor-pointer"
+                className="px-2 py-0.5 rounded text-[11px] bg-[#141a27] text-slate-300 hover:text-white border border-[#222c3f] hover:border-[#ce1126]/60 transition-colors whitespace-nowrap cursor-pointer"
               >
                 {topic}
               </button>
@@ -120,22 +126,12 @@ export const SearchModal: React.FC<SearchModalProps> = ({
 
         {/* Results List */}
         <div className="flex-1 overflow-y-auto p-4 space-y-2">
-          <div className="flex items-center justify-between text-xs font-mono text-amber-400/70 mb-2">
-            <span>
-              نتائج البحث ({searchResults.length} حلقة)
-            </span>
-            <span>
-              الصفحة {safePage} من {totalPages}
-            </span>
-          </div>
-
-          {searchResults.length === 0 ? (
-            <div className="py-12 text-center text-amber-300/60">
-              لم نعثر على حلقات مطابقة لبحثك. جرب كتابة كلمة أخرى.
+          {paginatedResults.length === 0 ? (
+            <div className="py-12 text-center text-slate-400">
+              لا توجد حلقات مطابقة للبحث "{query}"
             </div>
           ) : (
             paginatedResults.map((ep) => {
-              // Find which station matches this episode
               const matchedStation =
                 stations.find((st) => st.shows.includes(ep.showTitle)) || stations[0];
 
@@ -144,15 +140,14 @@ export const SearchModal: React.FC<SearchModalProps> = ({
                   key={ep.id}
                   onClick={() => {
                     soundEffects.playMechanicalKey();
-                    soundEffects.pulseTuningStatic(300, 0.2);
+                    soundEffects.pulseTuningStatic(260, 0.2);
                     onSelectEpisodeAndTune(ep, matchedStation);
                     onClose();
                   }}
-                  className="group p-2.5 rounded-lg bg-[#1a140f] hover:bg-[#251c15] border border-[#35271d] hover:border-amber-500 transition-all cursor-pointer flex items-center justify-between gap-3"
+                  className="flex items-center justify-between p-2.5 rounded-lg bg-[#121622] border border-[#202738] hover:border-[#ce1126]/60 hover:bg-[#161d2c] transition-all cursor-pointer group"
                 >
                   <div className="flex items-center gap-3 min-w-0">
-                    {/* Thumbnail */}
-                    <div className="relative w-16 h-12 rounded overflow-hidden bg-black shrink-0">
+                    <div className="relative w-14 sm:w-16 aspect-video rounded overflow-hidden bg-black shrink-0">
                       <img
                         src={ep.thumbnail}
                         alt={ep.title}
@@ -161,30 +156,30 @@ export const SearchModal: React.FC<SearchModalProps> = ({
                         loading="lazy"
                       />
                       <div className="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                        <Play className="w-3.5 h-3.5 text-amber-400 fill-current" />
+                        <Play className="w-3.5 h-3.5 text-[#ce1126] fill-current" />
                       </div>
                     </div>
 
-                    {/* Metadata */}
                     <div className="min-w-0">
-                      <div className="flex items-center gap-2">
-                        <span className="text-[11px] font-semibold text-amber-400 truncate">
+                      <div className="flex items-center gap-2 text-[11px] text-slate-400 mb-0.5">
+                        <span className="font-bold text-rose-400 truncate max-w-[140px]">
                           {ep.showTitle}
                         </span>
-                        <span className="text-[10px] font-mono px-1.5 py-0.2 rounded bg-amber-950/80 text-amber-300 border border-amber-800/40">
-                          {matchedStation.frequencyDisplay}
-                        </span>
+                        <span aria-hidden="true">·</span>
+                        <span className="font-mono text-slate-400">{matchedStation.shortName}</span>
                       </div>
-                      <h4 className="text-xs sm:text-sm font-bold text-amber-100 truncate mt-0.5 group-hover:text-amber-200">
+                      <h4 className="text-xs sm:text-sm font-semibold text-white group-hover:text-rose-200 transition-colors truncate">
                         {ep.title}
                       </h4>
                     </div>
                   </div>
 
-                  {/* Tune In Button */}
-                  <div className="shrink-0 flex items-center gap-2">
-                    <span className="text-xs font-semibold text-zinc-950 bg-amber-400 group-hover:bg-amber-300 px-2.5 py-1 rounded transition-colors whitespace-nowrap">
-                      موالفة واستماع
+                  <div className="flex items-center gap-2 shrink-0 mr-2">
+                    <span className="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-[#ce1126]/15 text-rose-300 border border-[#ce1126]/30">
+                      {matchedStation.frequencyDisplay}
+                    </span>
+                    <span className="text-xs font-bold text-rose-400 group-hover:translate-x-[-2px] transition-transform hidden sm:inline">
+                      موالفة واستماع ←
                     </span>
                   </div>
                 </div>
@@ -193,38 +188,31 @@ export const SearchModal: React.FC<SearchModalProps> = ({
           )}
         </div>
 
-        {/* Modal Pagination Footer */}
-        {totalPages > 1 && (
-          <div className="p-3 border-t border-[#35271d] bg-[#120d09] flex items-center justify-between">
+        {/* Footer Pagination */}
+        <div className="p-3 border-t border-[#1d2536] bg-[#090c12] flex items-center justify-between text-xs text-slate-400 font-mono">
+          <div>
+            النتائج: {searchResults.length} حلقة (صفحة {safePage} من {totalPages})
+          </div>
+
+          <div className="flex items-center gap-2">
             <button
-              onClick={() => {
-                soundEffects.playDialTick();
-                setPage((p) => Math.max(1, p - 1));
-              }}
-              disabled={safePage === 1}
-              className="flex items-center gap-1 px-3 py-1 text-xs rounded bg-[#201812] border border-[#3d2f23] text-amber-200 hover:text-amber-100 hover:border-amber-500 disabled:opacity-30 disabled:pointer-events-none cursor-pointer"
+              onClick={() => setPage((p) => Math.max(1, p - 1))}
+              disabled={safePage <= 1}
+              className="px-2.5 py-1 rounded bg-[#121622] border border-[#232b3d] text-slate-300 hover:text-white disabled:opacity-30 cursor-pointer flex items-center gap-1"
             >
               <ChevronRight className="w-3.5 h-3.5" />
               <span>السابق</span>
             </button>
-
-            <span className="text-xs font-mono text-amber-300/80">
-              {safePage} / {totalPages}
-            </span>
-
             <button
-              onClick={() => {
-                soundEffects.playDialTick();
-                setPage((p) => Math.min(totalPages, p + 1));
-              }}
-              disabled={safePage === totalPages}
-              className="flex items-center gap-1 px-3 py-1 text-xs rounded bg-[#201812] border border-[#3d2f23] text-amber-200 hover:text-amber-100 hover:border-amber-500 disabled:opacity-30 disabled:pointer-events-none cursor-pointer"
+              onClick={() => setPage((p) => Math.min(totalPages, p + 1))}
+              disabled={safePage >= totalPages}
+              className="px-2.5 py-1 rounded bg-[#121622] border border-[#232b3d] text-slate-300 hover:text-white disabled:opacity-30 cursor-pointer flex items-center gap-1"
             >
               <span>التالي</span>
               <ChevronLeft className="w-3.5 h-3.5" />
             </button>
           </div>
-        )}
+        </div>
       </div>
     </div>
   );

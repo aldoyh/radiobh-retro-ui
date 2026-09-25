@@ -1,6 +1,6 @@
 import React from 'react';
 import { EpisodeItem, RadioStation } from '../types/radio';
-import { History, Play, Radio, RotateCcw, Clock, Trash2 } from 'lucide-react';
+import { History, Play, Trash2, Radio } from 'lucide-react';
 import { soundEffects } from '../services/soundEffects';
 
 interface RecentHistoryProps {
@@ -23,20 +23,20 @@ export const RecentHistory: React.FC<RecentHistoryProps> = ({
   if (!history || history.length === 0) return null;
 
   return (
-    <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 py-6 border-b border-[#2d221a]/80">
+    <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 py-6 border-b border-[#1f2638]">
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4">
         <div className="flex items-center gap-2.5">
-          <div className="p-1.5 rounded-md bg-amber-500/10 text-amber-400 border border-amber-500/20">
+          <div className="p-1.5 rounded-md bg-[#ce1126]/10 text-rose-400 border border-[#ce1126]/20">
             <History className="w-4 h-4" />
           </div>
           <div>
-            <h4 className="text-sm font-bold text-amber-100 flex items-center gap-2">
+            <h4 className="text-sm font-bold text-white flex items-center gap-2">
               <span>سجل الاستماع الأخير · RECENT HISTORY</span>
-              <span className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-amber-950 text-amber-300 border border-amber-800/40">
+              <span className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-[#ce1126]/15 text-rose-300 border border-[#ce1126]/30">
                 {history.length} / 5 حلقات
               </span>
             </h4>
-            <p className="text-[11px] text-amber-300/60 mt-0.5">
+            <p className="text-[11px] text-slate-400 mt-0.5">
               الحلقات الـ 5 الأخيرة التي استمعت إليها للعودة السريعة لمتابعتها
             </p>
           </div>
@@ -48,7 +48,7 @@ export const RecentHistory: React.FC<RecentHistoryProps> = ({
               soundEffects.playMechanicalKey();
               onClearHistory();
             }}
-            className="flex items-center gap-1.5 text-xs text-amber-400/60 hover:text-red-400 transition-colors self-start sm:self-auto cursor-pointer"
+            className="flex items-center gap-1.5 text-xs text-slate-400 hover:text-rose-400 transition-colors self-start sm:self-auto cursor-pointer"
             title="مسح سجل الاستماع"
           >
             <Trash2 className="w-3.5 h-3.5" />
@@ -74,8 +74,8 @@ export const RecentHistory: React.FC<RecentHistoryProps> = ({
               }}
               className={`group relative p-2.5 rounded-lg border transition-all cursor-pointer flex flex-col justify-between ${
                 isCurrent
-                  ? 'bg-[#2a1e16] border-amber-500 shadow-[0_0_12px_rgba(245,158,11,0.25)] ring-1 ring-amber-500/50'
-                  : 'bg-[#18120e] border-[#36271c] hover:border-amber-700/80 hover:bg-[#201812]'
+                  ? 'bg-[#182030] border-[#ce1126] shadow-[0_0_12px_rgba(206,17,38,0.3)] ring-1 ring-[#ce1126]/50'
+                  : 'bg-[#121622] border-[#232b3d] hover:border-[#ce1126]/60 hover:bg-[#161d2c]'
               }`}
             >
               <div>
@@ -95,53 +95,40 @@ export const RecentHistory: React.FC<RecentHistoryProps> = ({
                       isCurrent ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'
                     }`}
                   >
-                    <div className="w-8 h-8 rounded-full bg-amber-500 text-zinc-950 flex items-center justify-center shadow-lg transform group-hover:scale-110 transition-transform">
+                    <div className="w-8 h-8 rounded-full bg-[#ce1126] text-white flex items-center justify-center shadow-lg transform group-hover:scale-110 transition-transform">
                       <Play className="w-4 h-4 fill-current ml-0.5" />
                     </div>
                   </div>
 
-                  {/* Playing pill */}
-                  {isCurrent ? (
-                    <span className="absolute top-1.5 right-1.5 px-1.5 py-0.5 rounded text-[8.5px] font-bold bg-amber-400 text-zinc-950 font-mono flex items-center gap-1 shadow-sm">
-                      <span className="w-1.5 h-1.5 rounded-full bg-red-600 animate-pulse" />
-                      {isPlaying ? 'يُبث الآن' : 'محدد'}
-                    </span>
-                  ) : (
-                    <span className="absolute top-1.5 right-1.5 px-1.5 py-0.5 rounded text-[8.5px] font-bold bg-black/75 text-amber-200/90 font-mono border border-white/10">
-                      #{idx + 1}
-                    </span>
-                  )}
-
                   {/* Frequency badge */}
-                  <span className="absolute bottom-1.5 left-1.5 px-1.5 py-0.5 rounded text-[8px] font-mono font-bold bg-amber-950/90 text-amber-300 border border-amber-800/60">
+                  <div className="absolute top-1.5 right-1.5 px-1.5 py-0.5 rounded bg-black/80 text-[9px] font-mono font-bold text-rose-300 border border-[#ce1126]/30">
                     {matchedStation.frequencyDisplay}
-                  </span>
+                  </div>
+
+                  {/* Now Playing indicator */}
+                  {isCurrent && (
+                    <div className="absolute bottom-1.5 right-1.5 px-1.5 py-0.5 rounded bg-[#ce1126] text-white text-[8.5px] font-mono font-bold flex items-center gap-1 shadow-sm">
+                      <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
+                      <span>قيد البث</span>
+                    </div>
+                  )}
                 </div>
 
                 {/* Show Title */}
-                <div className="text-[10px] font-semibold text-amber-400/90 truncate">
+                <div className="text-[10.5px] font-bold text-rose-400 truncate mb-0.5">
                   {ep.showTitle}
                 </div>
 
                 {/* Episode Title */}
-                <h5 className="text-xs font-bold text-amber-100 group-hover:text-amber-200 line-clamp-2 leading-snug mt-0.5">
+                <h5 className="text-xs font-semibold text-white group-hover:text-rose-200 transition-colors line-clamp-2 leading-tight">
                   {ep.title}
                 </h5>
               </div>
 
-              {/* Card Footer */}
-              <div className="mt-2.5 pt-2 border-t border-[#2e2118] flex items-center justify-between text-[10px] text-amber-300/60 font-mono">
-                <span className="flex items-center gap-1">
-                  <Clock className="w-2.5 h-2.5" />
-                  <span>
-                    {ep.duration ? ep.duration.replace('PT', '').replace('M', 'د ').replace('S', 'ث') : 'إذاعي'}
-                  </span>
-                </span>
-
-                <span className="text-amber-400 group-hover:underline flex items-center gap-1">
-                  <span>تشغيل</span>
-                  <RotateCcw className="w-2.5 h-2.5" />
-                </span>
+              {/* Station footer */}
+              <div className="mt-2.5 pt-2 border-t border-[#1d2536] flex items-center justify-between text-[10px] text-slate-400 font-mono">
+                <span className="truncate max-w-[120px]">{matchedStation.name}</span>
+                <span className="text-rose-400 font-bold group-hover:underline">موالفة</span>
               </div>
             </div>
           );

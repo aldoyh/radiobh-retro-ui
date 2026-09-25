@@ -3,10 +3,12 @@
 @layer base {
   body {
     font-family: 'Cairo', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background-color: #07090e;
+    color: #f8fafc;
   }
 }
 
-/* Vintage Radio Specialized Styling */
+/* Typography styles */
 .font-cairo {
   font-family: 'Cairo', system-ui, sans-serif;
 }
@@ -19,144 +21,170 @@
   font-family: 'Share Tech Mono', monospace;
 }
 
-/* Wood Grain Casing Gradients */
-.wood-grain-chassis {
+/* ==========================================================================
+   Radio Bahrain Master Theme (Based directly on the Official Logo & Identity):
+   - Primary Royal Red: #ce1126 / #8b0000 / #99001a (Bahrain Flag & Logo Crimson)
+   - Accent Vivid Red / Jewel Glow: #e11d48 / #ff2a5f
+   - Pure Studio White: #ffffff / #f8fafc (Calligraphy & Contrast Insignia)
+   - Studio Obsidian & Jet Carbon: #07090e / #0d1017 / #121622 / #1a2130
+   - Brushed Chrome & Aluminum: #f1f5f9 / #cbd5e1 / #94a3b8 / #64748b
+   - Warm Dial Amber Glow: #f59e0b / #d97706
+   ========================================================================== */
+
+/* 1. Radio Bahrain Obsidian High-End Cabinet */
+.obsidian-chassis {
   background: 
-    linear-gradient(180deg, rgba(255,255,255,0.06) 0%, rgba(0,0,0,0.5) 100%),
-    radial-gradient(ellipse at 50% 0%, #4a2711 0%, #2b1407 60%, #150903 100%);
+    linear-gradient(180deg, rgba(255, 255, 255, 0.06) 0%, rgba(0, 0, 0, 0.75) 100%),
+    radial-gradient(ellipse at 50% 0%, #1e2536 0%, #121622 50%, #07090e 100%);
   box-shadow: 
-    inset 0 1px 1px rgba(255,255,255,0.25),
-    inset 0 -2px 5px rgba(0,0,0,0.8),
-    0 25px 50px -12px rgba(0,0,0,0.8),
-    0 0 0 1px rgba(255,255,255,0.05);
+    inset 0 1px 1px rgba(255, 255, 255, 0.15),
+    inset 0 -2px 6px rgba(0, 0, 0, 0.95),
+    0 25px 60px -15px rgba(0, 0, 0, 0.95),
+    0 0 0 1px rgba(206, 17, 38, 0.25);
 }
 
-.wood-frame-bezel {
-  background: linear-gradient(135deg, #3d1f0e 0%, #231005 50%, #170902 100%);
+.chassis-frame-bezel {
+  background: linear-gradient(135deg, #283347 0%, #171d2b 50%, #0c0f17 100%);
   box-shadow: 
-    inset 1px 1px 2px rgba(255,255,255,0.15),
-    inset -1px -1px 2px rgba(0,0,0,0.7),
-    0 4px 12px rgba(0,0,0,0.5);
+    inset 1px 1px 2px rgba(255, 255, 255, 0.15),
+    inset -1px -1px 3px rgba(0, 0, 0, 0.85),
+    0 4px 16px rgba(0, 0, 0, 0.6);
 }
 
-/* Brushed Brass / Gold Metal */
+/* 2. Precision Brushed Anodized Metal Faceplate */
 .metal-faceplate {
   background: 
-    linear-gradient(180deg, #2a2520 0%, #1c1815 100%),
-    repeating-linear-gradient(90deg, rgba(255,255,255,0.01) 0px, rgba(255,255,255,0.01) 1px, transparent 1px, transparent 3px);
+    linear-gradient(180deg, #161b26 0%, #0e121a 100%),
+    repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.012) 0px, rgba(255, 255, 255, 0.012) 1px, transparent 1px, transparent 3px);
   box-shadow: 
-    inset 0 2px 4px rgba(0,0,0,0.6),
-    inset 0 -1px 2px rgba(255,255,255,0.05);
+    inset 0 2px 5px rgba(0, 0, 0, 0.85),
+    inset 0 -1px 2px rgba(255, 255, 255, 0.06);
 }
 
-.brass-plate {
-  background: linear-gradient(180deg, #e4be72 0%, #b88a38 50%, #8c631e 100%);
+/* 3. Bahrain Royal Red Metallic Badge & Trims */
+.bahrain-red-badge {
+  background: linear-gradient(180deg, #e11d48 0%, #ce1126 50%, #881337 100%);
   box-shadow: 
-    0 1px 2px rgba(0,0,0,0.4),
-    inset 0 1px 1px rgba(255,255,255,0.6),
-    inset 0 -1px 1px rgba(0,0,0,0.4);
+    0 2px 8px rgba(206, 17, 38, 0.5),
+    inset 0 1px 1px rgba(255, 255, 255, 0.5),
+    inset 0 -1px 2px rgba(0, 0, 0, 0.6);
 }
 
-.brass-trim {
-  border: 1px solid rgba(220, 175, 95, 0.4);
-  box-shadow: inset 0 0 4px rgba(200, 150, 60, 0.2);
+.bahrain-red-trim {
+  border: 1px solid rgba(206, 17, 38, 0.6);
+  box-shadow: 0 0 10px rgba(206, 17, 38, 0.3);
 }
 
-/* Woven Acoustic Speaker Grille */
+/* 4. Chrome / Brushed Aluminum Elements */
+.chrome-plate {
+  background: linear-gradient(180deg, #f8fafc 0%, #cbd5e1 50%, #64748b 100%);
+  box-shadow: 
+    0 1px 3px rgba(0, 0, 0, 0.6),
+    inset 0 1px 1px #ffffff,
+    inset 0 -1px 1px rgba(0, 0, 0, 0.4);
+}
+
+.chrome-trim {
+  border: 1px solid rgba(203, 213, 225, 0.4);
+  box-shadow: inset 0 0 4px rgba(255, 255, 255, 0.15);
+}
+
+/* 5. Acoustic Carbon / Matrix Speaker Grille */
 .speaker-grille-cloth {
-  background-color: #171412;
+  background-color: #080a0f;
   background-image: 
-    radial-gradient(#3a3227 15%, transparent 16%),
-    radial-gradient(#241e17 15%, transparent 16%);
+    radial-gradient(#1f2638 18%, transparent 19%),
+    radial-gradient(#131824 18%, transparent 19%);
   background-size: 8px 8px;
   background-position: 0 0, 4px 4px;
   box-shadow: 
-    inset 0 4px 8px rgba(0,0,0,0.9),
-    inset 0 0 20px rgba(0,0,0,0.8);
+    inset 0 4px 10px rgba(0, 0, 0, 0.95),
+    inset 0 0 25px rgba(0, 0, 0, 0.85);
 }
 
-/* Backlit Amber Analog Dial Glass */
+/* 6. Backlit Studio Frequency Dial Glass */
 .dial-glass {
-  background: radial-gradient(ellipse at 50% 50%, rgba(245, 158, 11, 0.18) 0%, rgba(180, 83, 9, 0.08) 50%, rgba(15, 10, 5, 0.95) 100%);
+  background: radial-gradient(ellipse at 50% 50%, rgba(206, 17, 38, 0.08) 0%, rgba(245, 158, 11, 0.04) 50%, rgba(10, 13, 20, 0.98) 100%);
   box-shadow: 
-    inset 0 0 35px rgba(245, 158, 11, 0.25),
-    inset 0 2px 4px rgba(0,0,0,0.9),
-    0 1px 0 rgba(255,255,255,0.1);
+    inset 0 0 35px rgba(206, 17, 38, 0.12),
+    inset 0 2px 5px rgba(0, 0, 0, 0.95),
+    0 1px 0 rgba(255, 255, 255, 0.08);
 }
 
 .dial-glass-active {
-  background: radial-gradient(ellipse at 50% 50%, rgba(245, 158, 11, 0.28) 0%, rgba(217, 119, 6, 0.15) 50%, rgba(18, 12, 6, 0.95) 100%);
+  background: radial-gradient(ellipse at 50% 50%, rgba(206, 17, 38, 0.18) 0%, rgba(245, 158, 11, 0.08) 55%, rgba(10, 13, 20, 0.98) 100%);
   box-shadow: 
-    inset 0 0 50px rgba(245, 158, 11, 0.35),
-    inset 0 2px 4px rgba(0,0,0,0.9);
+    inset 0 0 50px rgba(206, 17, 38, 0.22),
+    inset 0 0 25px rgba(245, 158, 11, 0.12),
+    inset 0 2px 5px rgba(0, 0, 0, 0.95);
 }
 
-/* Red Neon Dial Needle */
+/* 7. Bahrain Royal Red Tuning Needle */
 .tuning-needle {
-  background: linear-gradient(180deg, #ffedd5 0%, #ef4444 30%, #b91c1c 100%);
+  background: linear-gradient(180deg, #ffffff 0%, #ff2a5f 25%, #ce1126 70%, #7a0016 100%);
   box-shadow: 
-    0 0 8px #ef4444,
-    0 0 16px rgba(239, 68, 68, 0.6);
+    0 0 8px #ce1126,
+    0 0 16px rgba(206, 17, 38, 0.8);
 }
 
-/* Knurled Metal Knobs */
+/* 8. Knurled Chrome & Dark Titanium Metal Knobs */
 .knurled-knob {
   background: 
-    radial-gradient(circle at 35% 35%, #574c43 0%, #292420 60%, #151210 100%);
+    radial-gradient(circle at 35% 35%, #475569 0%, #1e293b 60%, #0f172a 100%);
   box-shadow: 
-    0 6px 12px rgba(0,0,0,0.7),
-    0 1px 2px rgba(0,0,0,0.9),
-    inset 0 1px 2px rgba(255,255,255,0.25),
-    inset 0 -2px 4px rgba(0,0,0,0.8);
+    0 6px 14px rgba(0, 0, 0, 0.8),
+    0 1px 3px rgba(0, 0, 0, 0.9),
+    inset 0 1px 2px rgba(255, 255, 255, 0.3),
+    inset 0 -2px 4px rgba(0, 0, 0, 0.85);
 }
 
 .knurled-edge {
-  background: repeating-conic-gradient(from 0deg, #3d352e 0deg 4deg, #1c1815 4deg 8deg);
+  background: repeating-conic-gradient(from 0deg, #334155 0deg 4deg, #0f172a 4deg 8deg);
 }
 
-/* Mechanical Push Button */
+/* 9. Heavy Push Buttons */
 .bakelite-button {
-  background: linear-gradient(180deg, #2e2823 0%, #1a1614 100%);
+  background: linear-gradient(180deg, #1c2230 0%, #10141e 100%);
   box-shadow: 
-    0 4px 6px rgba(0,0,0,0.6),
-    inset 0 1px 1px rgba(255,255,255,0.15),
-    inset 0 -2px 4px rgba(0,0,0,0.7);
+    0 4px 6px rgba(0, 0, 0, 0.65),
+    inset 0 1px 1px rgba(255, 255, 255, 0.15),
+    inset 0 -2px 4px rgba(0, 0, 0, 0.75);
   transition: all 0.1s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .bakelite-button:active,
 .bakelite-button-pressed {
-  background: linear-gradient(180deg, #151210 0%, #201c18 100%);
+  background: linear-gradient(180deg, #0a0d14 0%, #141824 100%);
   transform: translateY(3px);
   box-shadow: 
-    0 1px 2px rgba(0,0,0,0.8),
-    inset 0 2px 4px rgba(0,0,0,0.9),
-    0 0 8px rgba(245, 158, 11, 0.3);
+    0 1px 2px rgba(0, 0, 0, 0.85),
+    inset 0 2px 4px rgba(0, 0, 0, 0.95),
+    0 0 12px rgba(206, 17, 38, 0.4);
 }
 
-/* Leather Strap Handle with Stitching */
+/* 10. Heavy Stitched Carrying Strap with Bahrain Royal Red Stitching */
 .leather-belt {
   background: 
-    linear-gradient(180deg, rgba(255,255,255,0.12) 0%, rgba(0,0,0,0.4) 100%),
-    radial-gradient(ellipse at 50% 50%, #5c351b 0%, #3a1f0d 100%);
+    linear-gradient(180deg, rgba(255, 255, 255, 0.1) 0%, rgba(0, 0, 0, 0.6) 100%),
+    radial-gradient(ellipse at 50% 50%, #1c2333 0%, #0d111a 100%);
   box-shadow: 
-    0 8px 16px rgba(0,0,0,0.7),
-    inset 0 1px 2px rgba(255,255,255,0.2),
-    inset 0 -2px 4px rgba(0,0,0,0.6);
+    0 8px 18px rgba(0, 0, 0, 0.85),
+    inset 0 1px 2px rgba(255, 255, 255, 0.2),
+    inset 0 -2px 4px rgba(0, 0, 0, 0.8);
 }
 
 .belt-stitch {
-  border-top: 2px dashed rgba(230, 190, 130, 0.5);
-  border-bottom: 2px dashed rgba(230, 190, 130, 0.5);
+  border-top: 2px dashed #ce1126;
+  border-bottom: 2px dashed #ce1126;
 }
 
-/* CRT TV retro scanlines */
+/* 11. Retro CRT TV Scanlines */
 .crt-screen {
   position: relative;
   overflow: hidden;
   box-shadow: 
-    inset 0 0 20px rgba(0,0,0,0.85),
-    0 0 12px rgba(0,0,0,0.9);
+    inset 0 0 20px rgba(0, 0, 0, 0.95),
+    0 0 14px rgba(0, 0, 0, 0.9);
 }
 
 .crt-screen::before {
@@ -164,19 +192,10 @@
   display: block;
   position: absolute;
   top: 0; left: 0; bottom: 0; right: 0;
-  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.35) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.04), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.04));
+  background: linear-gradient(rgba(14, 18, 25, 0) 50%, rgba(0, 0, 0, 0.4) 50%), linear-gradient(90deg, rgba(206, 17, 38, 0.04), transparent, rgba(0, 0, 0, 0.05));
   z-index: 10;
   background-size: 100% 3px, 6px 100%;
   pointer-events: none;
-}
-
-/* Glow indicators */
-.tube-glow-green {
-  box-shadow: 0 0 12px #22c55e, 0 0 24px rgba(34, 197, 94, 0.4);
-}
-
-.tube-glow-amber {
-  box-shadow: 0 0 12px #f59e0b, 0 0 24px rgba(245, 158, 11, 0.4);
 }
 
 /* Custom scrollbars */
@@ -185,12 +204,12 @@
   height: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #181412;
+  background: #090c12;
 }
 ::-webkit-scrollbar-thumb {
-  background: #42352b;
+  background: #232b3d;
   border-radius: 3px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #614e3f;
+  background: #ce1126;
 }

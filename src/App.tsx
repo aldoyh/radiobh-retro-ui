@@ -259,7 +259,7 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-[#110d0a] text-[#f4ecd8] flex flex-col font-cairo">
+    <div className="min-h-screen bg-[#07090e] text-[#f8fafc] flex flex-col font-cairo">
       {/* 1. Header Top Bar (Strict Top Bar Contract) */}
       <HeaderTopBar
         onOpenSearch={() => setIsSearchOpen(true)}
@@ -272,16 +272,16 @@ export default function App() {
 
       {/* 2. Hero Headline & Editorial Context */}
       <section className="relative px-4 sm:px-6 pt-6 sm:pt-10 pb-4 text-center max-w-4xl mx-auto">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-300 text-xs font-mono font-medium mb-3">
-          <Sparkles className="w-3.5 h-3.5 text-amber-400" />
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#ce1126]/10 border border-[#ce1126]/30 text-rose-300 text-xs font-mono font-medium mb-3">
+          <Sparkles className="w-3.5 h-3.5 text-[#ce1126]" />
           <span>منظومة الموالفة الموضوعية الذكية · THEMATIC VINTAGE RADIO</span>
         </div>
 
-        <h1 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-amber-100 leading-tight">
+        <h1 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white leading-tight">
           جهاز راديو إذاعة البحرين الكلاسيكي
         </h1>
 
-        <p className="mt-2.5 text-sm sm:text-base text-amber-200/80 max-w-2xl mx-auto leading-relaxed">
+        <p className="mt-2.5 text-sm sm:text-base text-slate-300 max-w-2xl mx-auto leading-relaxed">
           حيث لا تمثل الترددات أرقاماً عادية، بل بؤراً معرفية وموضوعية تربط 47 برنامجاً و810 حلقات
           مسجلة من بودكاست وبرامج إذاعة البحرين وفق خوارزميات الذكاء الاصطناعي.
         </p>
@@ -335,20 +335,20 @@ export default function App() {
 
         {/* 5. Station Frequencies Catalog Grid */}
         <section className="max-w-5xl mx-auto px-2 sm:px-4 mt-12 mb-16">
-          <div className="flex items-center justify-between mb-4 border-b border-[#31251c] pb-3">
+          <div className="flex items-center justify-between mb-4 border-b border-[#1f2638] pb-3">
             <div>
-              <h3 className="text-lg font-bold text-amber-100 flex items-center gap-2">
-                <RadioIcon className="w-5 h-5 text-amber-400" />
+              <h3 className="text-lg font-bold text-white flex items-center gap-2">
+                <RadioIcon className="w-5 h-5 text-[#ce1126]" />
                 <span>الموجات والترددات الموضوعية المتاحة (10 محطات)</span>
               </h3>
-              <p className="text-xs text-amber-300/70 mt-0.5">
+              <p className="text-xs text-slate-400 mt-0.5">
                 انقر على أي محطة لموالفة تردد الراديو إليها والبدء بالبث
               </p>
             </div>
 
             <button
               onClick={() => setIsThematicGuideOpen(true)}
-              className="text-xs font-semibold text-amber-400 hover:text-amber-300 flex items-center gap-1 cursor-pointer"
+              className="text-xs font-semibold text-rose-400 hover:text-white flex items-center gap-1 cursor-pointer transition-colors"
             >
               <span>دليل الذكاء الاصطناعي</span>
               <ChevronLeft className="w-4 h-4" />
@@ -370,29 +370,29 @@ export default function App() {
                   }}
                   className={`p-3.5 rounded-xl border transition-all cursor-pointer flex flex-col justify-between ${
                     isCurrent
-                      ? 'bg-[#241a13] border-amber-500 shadow-md ring-1 ring-amber-500/50'
-                      : 'bg-[#18120e] border-[#35271d] hover:border-amber-700/80 hover:bg-[#1e1611]'
+                      ? 'bg-[#182030] border-[#ce1126] shadow-md ring-1 ring-[#ce1126]/50'
+                      : 'bg-[#0f141f] border-[#1f2638] hover:border-[#ce1126]/60 hover:bg-[#141a27]'
                   }`}
                 >
                   <div>
                     <div className="flex items-center justify-between gap-2 mb-2">
-                      <span className="text-[11px] font-mono font-bold px-2 py-0.5 rounded bg-amber-500 text-zinc-950">
+                      <span className="text-[11px] font-mono font-bold px-2 py-0.5 rounded bg-[#ce1126] text-white">
                         {st.frequencyDisplay}
                       </span>
-                      <span className="text-xs font-mono font-bold text-amber-400">{st.shortName}</span>
+                      <span className="text-xs font-mono font-bold text-rose-400">{st.shortName}</span>
                     </div>
 
-                    <h4 className="text-sm font-bold text-amber-100 mb-1">{st.name}</h4>
-                    <p className="text-xs text-amber-200/70 line-clamp-2 leading-relaxed">
+                    <h4 className="text-sm font-bold text-white mb-1">{st.name}</h4>
+                    <p className="text-xs text-slate-300 line-clamp-2 leading-relaxed">
                       {st.description}
                     </p>
                   </div>
 
-                  <div className="mt-3 pt-2.5 border-t border-[#2e2118] flex items-center justify-between text-xs">
-                    <span className="text-amber-400/80 font-mono">
+                  <div className="mt-3 pt-2.5 border-t border-[#1b2232] flex items-center justify-between text-xs">
+                    <span className="text-slate-400 font-mono">
                       {st.episodeCount} حلقة · {st.showCount} برامج
                     </span>
-                    <span className="font-semibold text-amber-300 flex items-center gap-1 group-hover:underline">
+                    <span className="font-semibold text-rose-400 flex items-center gap-1 group-hover:underline">
                       <span>موالفة</span>
                       <ChevronLeft className="w-3.5 h-3.5" />
                     </span>
@@ -405,7 +405,7 @@ export default function App() {
       </main>
 
       {/* 6. Footer with Recent History (Tracks last 5 episodes played) */}
-      <footer ref={historyRef} className="w-full border-t border-[#2a1f18] bg-[#0d0a08] text-xs text-amber-300/60">
+      <footer ref={historyRef} className="w-full border-t border-[#1f2638] bg-[#07090e] text-xs text-slate-400">
         {/* Recent History Section */}
         <RecentHistory
           history={recentHistory}
@@ -419,8 +419,8 @@ export default function App() {
         {/* Footer Base Credits & Navigation */}
         <div className="max-w-7xl mx-auto px-4 py-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-center">
           <div className="flex items-center gap-2">
-            <RadioIcon className="w-4 h-4 text-amber-500" />
-            <span className="font-bold text-amber-200">إذاعة البحرين الكلاسيكية</span>
+            <RadioIcon className="w-4 h-4 text-[#ce1126]" />
+            <span className="font-bold text-white">إذاعة البحرين الكلاسيكية</span>
             <span>·</span>
             <span>بث ذكي لبودكاست وبرامج إذاعة مملكة البحرين</span>
           </div>
@@ -428,14 +428,14 @@ export default function App() {
           <div className="flex items-center gap-4 text-[11px] font-mono">
             <button
               onClick={() => setIsCatalogOpen(true)}
-              className="hover:text-amber-200 transition-colors cursor-pointer"
+              className="hover:text-white transition-colors cursor-pointer"
             >
               47 برنامجاً
             </button>
             <span>·</span>
             <button
               onClick={() => setIsSearchOpen(true)}
-              className="hover:text-amber-200 transition-colors cursor-pointer"
+              className="hover:text-white transition-colors cursor-pointer"
             >
               810 حلقات
             </button>
