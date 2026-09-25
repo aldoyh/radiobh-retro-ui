@@ -1,0 +1,6 @@
+{
+  "name": "إذاعة البحرين الكلاسيكية - راديو البودكاست الذكي",
+  "description": "جهاز راديو كلاسيكي بنمط عتيق ومقابض ميكانيكية لبث وتصفح بودكاست وبرامج إذاعة البحرين وفق الترددات الموضوعية وروابط الذكاء الاصطناعي.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
